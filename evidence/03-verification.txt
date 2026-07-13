@@ -1,0 +1,172 @@
+=== VERSION CHECK ===
+db version v8.0.26
+Build Info: {
+    "version": "8.0.26",
+    "gitVersion": "a2c24805265db119cc39f2f54e067b4294a4ddd2",
+    "openSSLVersion": "OpenSSL 3.0.13 30 Jan 2024",
+
+=== MONGOSH VERSION ===
+2.9.2
+
+=== SERVICE STATUS ===
+? mongod.service - MongoDB Database Server
+     Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2026-07-12 02:39:41 UTC; 1min 56s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 8510 (mongod)
+     Memory: 92.2M (peak: 92.3M)
+        CPU: 1.381s
+     CGroup: /system.slice/mongod.service
+             +-8510 /usr/bin/mongod --config /etc/mongod.conf
+
+Jul 12 02:39:41 ip-172-31-2-120 systemd[1]: Started mongod.service - MongoDB Database Server.
+Jul 12 02:39:41 ip-172-31-2-120 mongod[8510]: {"t":{"$date":"2026-07-12T02:39:41.933Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CONFIG_OVERRIDE_NOFORK == 1, overriding \"processManagement.fork\" to false"}
+
+=== ENABLED / ACTIVE ===
+enabled
+active
+
+=== PORT LISTENER ===
+LISTEN 0      4096       127.0.0.1:27017      0.0.0.0:*          
+
+=== CONFIG FILE ===
+# mongod.conf
+
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+# Where and how to store data.
+storage:
+  dbPath: /var/lib/mongodb
+#  engine:
+#  wiredTiger:
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+
+# network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1
+
+
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+
+#security:
+
+#operationProfiling:
+
+#replication:
+
+#sharding:
+
+## Enterprise-Only Options:
+
+#auditLog:
+
+=== DATA DIRECTORY ===
+total 192K
+drwxr-xr-x  4 mongodb mongodb 4.0K Jul 12 02:40 .
+drwxr-xr-x 46 root    root    4.0K Jul 12 02:39 ..
+-rw-------  1 mongodb mongodb   50 Jul 12 02:39 WiredTiger
+-rw-------  1 mongodb mongodb   21 Jul 12 02:39 WiredTiger.lock
+-rw-------  1 mongodb mongodb 1.5K Jul 12 02:40 WiredTiger.turtle
+-rw-------  1 mongodb mongodb  36K Jul 12 02:40 WiredTiger.wt
+-rw-------  1 mongodb mongodb 4.0K Jul 12 02:39 WiredTigerHS.wt
+-rw-------  1 mongodb mongodb  20K Jul 12 02:40 _mdb_catalog.wt
+-rw-------  1 mongodb mongodb  20K Jul 12 02:40 collection-0-12721270935408528539.wt
+-rw-------  1 mongodb mongodb  20K Jul 12 02:40 collection-2-12721270935408528539.wt
+-rw-------  1 mongodb mongodb 4.0K Jul 12 02:39 collection-4-12721270935408528539.wt
+drwx------  2 mongodb mongodb 4.0K Jul 12 02:41 diagnostic.data
+-rw-------  1 mongodb mongodb  20K Jul 12 02:40 index-1-12721270935408528539.wt
+-rw-------  1 mongodb mongodb  20K Jul 12 02:40 index-3-12721270935408528539.wt
+-rw-------  1 mongodb mongodb 4.0K Jul 12 02:39 index-5-12721270935408528539.wt
+-rw-------  1 mongodb mongodb 4.0K Jul 12 02:39 index-6-12721270935408528539.wt
+drwx------  2 mongodb mongodb 4.0K Jul 12 02:39 journal
+-rw-------  1 mongodb mongodb    5 Jul 12 02:39 mongod.lock
+-rw-------  1 mongodb mongodb 4.0K Jul 12 02:39 sizeStorer.wt
+-rw-------  1 mongodb mongodb  114 Jul 12 02:39 storage.bson
+
+=== LOG DIRECTORY ===
+total 48K
+drwxr-xr-x  2 mongodb mongodb 4.0K Jul 12 02:39 .
+drwxrwxr-x 12 root    syslog  4.0K Jul 12 02:39 ..
+-rw-------  1 mongodb mongodb  38K Jul 12 02:40 mongod.log
+
+=== RECENT LOGS ===
+{"t":{"$date":"2026-07-12T02:40:10.862+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36438","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"66c02778-42f3-4198-8822-d18e419e80c7"}},"connectionId":3,"local":"127.0.0.1:27017","connectionCount":3}}
+{"t":{"$date":"2026-07-12T02:40:10.862+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36446","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"c9293793-6316-418b-8e51-9a37123cdd5e"}},"connectionId":4,"local":"127.0.0.1:27017","connectionCount":4}}
+{"t":{"$date":"2026-07-12T02:40:10.866+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn3","msg":"client metadata","attr":{"remote":"127.0.0.1:36438","client":"conn3","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.866+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn3","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36438","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.866+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn4","msg":"client metadata","attr":{"remote":"127.0.0.1:36446","client":"conn4","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.866+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn4","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36446","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.872+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36456","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"894eb925-1e41-4a97-a76d-f2ce2c53de82"}},"connectionId":5,"local":"127.0.0.1:27017","connectionCount":5}}
+{"t":{"$date":"2026-07-12T02:40:10.875+00:00"},"s":"I",  "c":"NETWORK",  "id":6788700, "ctx":"conn4","msg":"Received first command on ingress connection since session start or auth handshake","attr":{"elapsedMillis":8}}
+{"t":{"$date":"2026-07-12T02:40:10.876+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn5","msg":"client metadata","attr":{"remote":"127.0.0.1:36456","client":"conn5","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.876+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn5","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36456","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:10.881+00:00"},"s":"I",  "c":"NETWORK",  "id":6788700, "ctx":"conn5","msg":"Received first command on ingress connection since session start or auth handshake","attr":{"elapsedMillis":5}}
+{"t":{"$date":"2026-07-12T02:40:10.885+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn1","msg":"Connection ended","attr":{"remote":"127.0.0.1:36422","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"7baca935-dcfc-40e0-a4bc-cae36a533395"}},"connectionId":1,"local":"127.0.0.1:27017","connectionCount":4}}
+{"t":{"$date":"2026-07-12T02:40:10.885+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn5","msg":"Connection ended","attr":{"remote":"127.0.0.1:36456","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"894eb925-1e41-4a97-a76d-f2ce2c53de82"}},"connectionId":5,"local":"127.0.0.1:27017","connectionCount":3}}
+{"t":{"$date":"2026-07-12T02:40:10.885+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn4","msg":"Connection ended","attr":{"remote":"127.0.0.1:36446","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"c9293793-6316-418b-8e51-9a37123cdd5e"}},"connectionId":4,"local":"127.0.0.1:27017","connectionCount":2}}
+{"t":{"$date":"2026-07-12T02:40:10.886+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn3","msg":"Connection ended","attr":{"remote":"127.0.0.1:36438","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"66c02778-42f3-4198-8822-d18e419e80c7"}},"connectionId":3,"local":"127.0.0.1:27017","connectionCount":1}}
+{"t":{"$date":"2026-07-12T02:40:10.886+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn2","msg":"Connection ended","attr":{"remote":"127.0.0.1:36436","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"d1edd826-5a97-4735-ae86-fd34da856f1a"}},"connectionId":2,"local":"127.0.0.1:27017","connectionCount":0}}
+{"t":{"$date":"2026-07-12T02:40:11.265+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36464","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"21b7d87e-cf16-4e7b-aca1-5a31708ee51a"}},"connectionId":6,"local":"127.0.0.1:27017","connectionCount":1}}
+{"t":{"$date":"2026-07-12T02:40:11.268+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn6","msg":"client metadata","attr":{"remote":"127.0.0.1:36464","client":"conn6","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.268+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn6","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36464","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.273+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36466","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"438155c3-d80f-4324-95b7-b3ea44c5f167"}},"connectionId":7,"local":"127.0.0.1:27017","connectionCount":2}}
+{"t":{"$date":"2026-07-12T02:40:11.274+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn7","msg":"client metadata","attr":{"remote":"127.0.0.1:36466","client":"conn7","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.274+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn7","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36466","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.288+00:00"},"s":"I",  "c":"NETWORK",  "id":6788700, "ctx":"conn7","msg":"Received first command on ingress connection since session start or auth handshake","attr":{"elapsedMillis":14}}
+{"t":{"$date":"2026-07-12T02:40:11.367+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36478","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"746abc4b-acfb-47cf-ba44-f160aafcb71c"}},"connectionId":8,"local":"127.0.0.1:27017","connectionCount":3}}
+{"t":{"$date":"2026-07-12T02:40:11.367+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36494","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"29a4e2b4-93f2-4968-a5e4-38c5acdecb69"}},"connectionId":9,"local":"127.0.0.1:27017","connectionCount":4}}
+{"t":{"$date":"2026-07-12T02:40:11.371+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn8","msg":"client metadata","attr":{"remote":"127.0.0.1:36478","client":"conn8","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.371+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn8","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36478","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.371+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn9","msg":"client metadata","attr":{"remote":"127.0.0.1:36494","client":"conn9","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.372+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn9","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36494","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.375+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:36500","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"001d1992-a71c-4306-a46d-cc2b70aac5a1"}},"connectionId":10,"local":"127.0.0.1:27017","connectionCount":5}}
+{"t":{"$date":"2026-07-12T02:40:11.376+00:00"},"s":"I",  "c":"NETWORK",  "id":6788700, "ctx":"conn9","msg":"Received first command on ingress connection since session start or auth handshake","attr":{"elapsedMillis":4}}
+{"t":{"$date":"2026-07-12T02:40:11.378+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn10","msg":"client metadata","attr":{"remote":"127.0.0.1:36500","client":"conn10","negotiatedCompressors":[],"doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.378+00:00"},"s":"I",  "c":"ACCESS",   "id":10483900,"ctx":"conn10","msg":"Connection not authenticating","attr":{"client":"127.0.0.1:36500","doc":{"application":{"name":"mongosh 2.9.2"},"driver":{"name":"nodejs|mongosh","version":"7.3.0|2.9.2"},"platform":"Node.js v24.18.0, LE","os":{"name":"linux","architecture":"x64","version":"3.10.0-327.22.2.el7.x86_64","type":"Linux"}}}}
+{"t":{"$date":"2026-07-12T02:40:11.383+00:00"},"s":"I",  "c":"NETWORK",  "id":6788700, "ctx":"conn10","msg":"Received first command on ingress connection since session start or auth handshake","attr":{"elapsedMillis":4}}
+{"t":{"$date":"2026-07-12T02:40:11.390+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn6","msg":"Connection ended","attr":{"remote":"127.0.0.1:36464","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"21b7d87e-cf16-4e7b-aca1-5a31708ee51a"}},"connectionId":6,"local":"127.0.0.1:27017","connectionCount":4}}
+{"t":{"$date":"2026-07-12T02:40:11.390+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn10","msg":"Connection ended","attr":{"remote":"127.0.0.1:36500","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"001d1992-a71c-4306-a46d-cc2b70aac5a1"}},"connectionId":10,"local":"127.0.0.1:27017","connectionCount":3}}
+{"t":{"$date":"2026-07-12T02:40:11.390+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn9","msg":"Connection ended","attr":{"remote":"127.0.0.1:36494","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"29a4e2b4-93f2-4968-a5e4-38c5acdecb69"}},"connectionId":9,"local":"127.0.0.1:27017","connectionCount":2}}
+{"t":{"$date":"2026-07-12T02:40:11.391+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn8","msg":"Connection ended","attr":{"remote":"127.0.0.1:36478","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"746abc4b-acfb-47cf-ba44-f160aafcb71c"}},"connectionId":8,"local":"127.0.0.1:27017","connectionCount":1}}
+{"t":{"$date":"2026-07-12T02:40:11.391+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn7","msg":"Connection ended","attr":{"remote":"127.0.0.1:36466","isLoadBalanced":false,"isProxyUnixSock":false,"uuid":{"uuid":{"$uuid":"438155c3-d80f-4324-95b7-b3ea44c5f167"}},"connectionId":7,"local":"127.0.0.1:27017","connectionCount":0}}
+{"t":{"$date":"2026-07-12T02:40:42.908+00:00"},"s":"I",  "c":"WTCHKPT",  "id":22430,   "ctx":"Checkpointer","msg":"WiredTiger message","attr":{"message":{"ts_sec":1783824042,"ts_usec":908493,"thread":"8510:0x7a4c954db6c0","session_name":"WT_SESSION.checkpoint","category":"WT_VERB_CHECKPOINT_PROGRESS","log_id":1000000,"category_id":7,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"saving checkpoint snapshot min: 33, snapshot max: 33 snapshot count: 0, oldest timestamp: (0, 0) , meta checkpoint timestamp: (0, 0) base write gen: 1"}}}
+
+=== MONGOSH PING AND CRUD TEST ===
+{
+  ok: 1
+}
+{
+  _id: ObjectId('6a52fee2c449718a8fb16828'),
+  status: 'ok',
+  createdAt: ISODate('2026-07-12T02:41:38.689Z')
+}
+count=1
+
+=== DATABASE LIST ===
+[
+  {
+    name: 'admin',
+    sizeOnDisk: Long('40960')
+  },
+  {
+    name: 'config',
+    sizeOnDisk: Long('12288')
+  },
+  {
+    name: 'local',
+    sizeOnDisk: Long('40960')
+  },
+  {
+    name: 'single_node_lab',
+    sizeOnDisk: Long('8192')
+  }
+]
