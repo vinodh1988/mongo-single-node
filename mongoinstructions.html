@@ -447,7 +447,7 @@
 
       <h3>Step 2: Run the seed script</h3>
       <p>Make sure MongoDB is running, then run:</p>
-      <pre><code>mongosh seed-bigone.js</code></pre>
+      <pre><code>mongosh "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/admin" seed-bigone.js</code></pre>
 
       <h3>Step 3: Switch to the new database</h3>
       <pre><code>mongosh
@@ -473,32 +473,32 @@ db.supportTickets.find({ status: "open" }).limit(5)</code></pre>
 
     <section>
       <h2>8. Back Up the bigone Database Using mongoexport</h2>
-      <p><code>mongoexport</code> exports one collection at a time. To back up all five collections from <code>bigone</code>, run one command per collection.</p>
+      <p><code>mongoexport</code> exports one collection at a time. This server uses authentication, so connect to <code>bigone</code> and authenticate through <code>admin</code> by using <code>?authSource=admin</code>.</p>
 
       <h3>Step 1: Create a backup folder</h3>
       <p>In PowerShell, run:</p>
       <pre><code>mkdir bigone-export</code></pre>
 
       <h3>Step 2: Export customers</h3>
-      <pre><code>mongoexport --db bigone --collection customers --out bigone-export\customers.json --jsonArray</code></pre>
+      <pre><code>mongoexport --uri "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/bigone?authSource=admin" --collection customers --out bigone-export\customers.json --jsonArray</code></pre>
 
       <h3>Step 3: Export products</h3>
-      <pre><code>mongoexport --db bigone --collection products --out bigone-export\products.json --jsonArray</code></pre>
+      <pre><code>mongoexport --uri "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/bigone?authSource=admin" --collection products --out bigone-export\products.json --jsonArray</code></pre>
 
       <h3>Step 4: Export orders</h3>
-      <pre><code>mongoexport --db bigone --collection orders --out bigone-export\orders.json --jsonArray</code></pre>
+      <pre><code>mongoexport --uri "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/bigone?authSource=admin" --collection orders --out bigone-export\orders.json --jsonArray</code></pre>
 
       <h3>Step 5: Export reviews</h3>
-      <pre><code>mongoexport --db bigone --collection reviews --out bigone-export\reviews.json --jsonArray</code></pre>
+      <pre><code>mongoexport --uri "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/bigone?authSource=admin" --collection reviews --out bigone-export\reviews.json --jsonArray</code></pre>
 
       <h3>Step 6: Export support tickets</h3>
-      <pre><code>mongoexport --db bigone --collection supportTickets --out bigone-export\supportTickets.json --jsonArray</code></pre>
+      <pre><code>mongoexport --uri "mongodb://siteAdmin:&lt;URL_ENCODED_PASSWORD&gt;@18.61.157.150:27017/bigone?authSource=admin" --collection supportTickets --out bigone-export\supportTickets.json --jsonArray</code></pre>
 
       <h3>Step 7: Check exported files</h3>
       <pre><code>dir bigone-export</code></pre>
 
       <div class="note">
-        If your MongoDB server uses authentication, add your connection string with <code>--uri</code>. Example: <code>mongoexport --uri "mongodb://username:password@localhost:27017/bigone" --collection customers --out bigone-export\customers.json --jsonArray</code>
+        Replace <code>&lt;URL_ENCODED_PASSWORD&gt;</code> with the URL-encoded password. For example, <code>@</code> becomes <code>%40</code> and <code>!</code> becomes <code>%21</code>.
       </div>
 
       <div class="note">
@@ -508,5 +508,6 @@ db.supportTickets.find({ status: "open" }).limit(5)</code></pre>
   </main>
 </body>
 </html>
+
 
 
