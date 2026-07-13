@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB Basics Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f5f7fb;
+    }
+
+    header {
+      background: #116149;
+      color: #ffffff;
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    section {
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 22px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+    }
+
+    h2 {
+      color: #116149;
+      border-bottom: 2px solid #d9e2ec;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 8px;
+      overflow-x: auto;
+      padding: 16px;
+      margin: 12px 0 18px;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    .note {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+
+    ol li,
+    ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MongoDB Basics Tutorial</h1>
+    <p>Practice insert, find, update, and delete commands using the <code>mongoadmin.people</code> collection.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Before You Start</h2>
+      <p>This tutorial assumes you already have a MongoDB database named <code>mongoadmin</code> and a collection named <code>people</code>.</p>
+      <p>Open <code>mongosh</code> and switch to the database:</p>
+      <pre><code>use mongoadmin</code></pre>
+      <p>Check the current database:</p>
+      <pre><code>db</code></pre>
+      <p>Check available collections:</p>
+      <pre><code>show collections</code></pre>
+      <div class="note">
+        If <code>people</code> does not exist yet, MongoDB will create it automatically when you insert the first document.
+      </div>
+    </section>
+
+    <section>
+      <h2>1. Insert Documents</h2>
+
+      <h3>Step 1: Insert one person</h3>
+      <p><code>insertOne()</code> adds a single document to the collection.</p>
+      <pre><code>db.people.insertOne({
+  name: "Asha",
+  age: 24,
+  city: "Mumbai",
+  skills: ["JavaScript", "MongoDB"],
+  active: true
+})</code></pre>
+
+      <h3>Step 2: Insert many people</h3>
+      <p><code>insertMany()</code> adds multiple documents at once.</p>
+      <pre><code>db.people.insertMany([
+  {
+    name: "Rahul",
+    age: 29,
+    city: "Delhi",
+    skills: ["Python", "MongoDB"],
+    active: true
+  },
+  {
+    name: "Meera",
+    age: 31,
+    city: "Bengaluru",
+    skills: ["Java", "Spring"],
+    active: false
+  },
+  {
+    name: "John",
+    age: 27,
+    city: "Pune",
+    skills: ["Node.js", "React"],
+    active: true
+  }
+])</code></pre>
+
+      <h3>Step 3: Insert a person with a nested address object</h3>
+      <p>Documents can contain objects inside objects. This is useful when related details belong together.</p>
+      <pre><code>db.people.insertOne({
+  name: "Sneha",
+  age: 26,
+  email: "sneha@example.com",
+  address: {
+    street: "MG Road",
+    city: "Bengaluru",
+    state: "Karnataka",
+    pincode: 560001
+  },
+  active: true
+})</code></pre>
+
+      <h3>Step 4: Insert a person with an array of objects</h3>
+      <p>An array can store simple values, or it can store multiple objects.</p>
+      <pre><code>db.people.insertOne({
+  name: "Vikram",
+  age: 35,
+  city: "Chennai",
+  education: [
+    {
+      degree: "B.Tech",
+      subject: "Computer Science",
+      year: 2011
+    },
+    {
+      degree: "MBA",
+      subject: "Operations",
+      year: 2015
+    }
+  ],
+  active: true
+})</code></pre>
+
+      <h3>Step 5: Insert a person with work experience details</h3>
+      <p>This document uses nested objects, arrays, numbers, and booleans together.</p>
+      <pre><code>db.people.insertOne({
+  name: "Fatima",
+  age: 32,
+  city: "Hyderabad",
+  job: {
+    title: "Database Administrator",
+    company: "CloudCore",
+    yearsOfExperience: 7
+  },
+  certifications: ["MongoDB Associate", "AWS Cloud Practitioner"],
+  remoteWorker: false,
+  active: true
+})</code></pre>
+
+      <h3>Step 6: Insert a person with a date field</h3>
+      <p>Use <code>new Date()</code> when you want MongoDB to store a real date value.</p>
+      <pre><code>db.people.insertOne({
+  name: "Arjun",
+  age: 28,
+  city: "Jaipur",
+  joinedAt: new Date("2025-01-15"),
+  lastLoginAt: new Date(),
+  active: true
+})</code></pre>
+
+      <h3>Step 7: Insert a document with optional fields missing</h3>
+      <p>MongoDB documents in the same collection do not need to have exactly the same fields.</p>
+      <pre><code>db.people.insertOne({
+  name: "Neha",
+  city: "Kolkata",
+  skills: ["HTML", "CSS"]
+})</code></pre>
+
+      <h3>Step 8: Insert a student-style document</h3>
+      <p>The collection is named <code>people</code>, but each person can have a different structure depending on what you need to store.</p>
+      <pre><code>db.people.insertOne({
+  name: "Kabir",
+  type: "student",
+  age: 21,
+  city: "Ahmedabad",
+  marks: {
+    maths: 88,
+    science: 92,
+    english: 81
+  },
+  hobbies: ["Cricket", "Reading", "Coding"],
+  active: true
+})</code></pre>
+
+      <h3>Step 9: Insert many people with different structures</h3>
+      <p><code>insertMany()</code> can also insert documents that do not all share the same shape.</p>
+      <pre><code>db.people.insertMany([
+  {
+    name: "Priya",
+    type: "freelancer",
+    city: "Goa",
+    projectsCompleted: 18,
+    skills: ["Design", "Figma"]
+  },
+  {
+    name: "Sanjay",
+    type: "manager",
+    city: "Noida",
+    team: {
+      name: "Backend API",
+      size: 6
+    },
+    active: true
+  },
+  {
+    name: "Lina",
+    type: "intern",
+    college: "National Engineering College",
+    stipend: 15000,
+    skills: ["Python"]
+  }
+])</code></pre>
+
+      <h3>Step 10: Confirm inserted data</h3>
+      <pre><code>db.people.find()</code></pre>
+      <p>For cleaner output, use <code>pretty()</code>:</p>
+      <pre><code>db.people.find().pretty()</code></pre>
+    </section>
+
+    <section>
+      <h2>2. Find Documents</h2>
+
+      <h3>Step 1: Find all people</h3>
+      <pre><code>db.people.find()</code></pre>
+
+      <h3>Step 2: Find one person</h3>
+      <p><code>findOne()</code> returns the first matching document.</p>
+      <pre><code>db.people.findOne({ name: "Asha" })</code></pre>
+
+      <h3>Step 3: Find people from a city</h3>
+      <pre><code>db.people.find({ city: "Delhi" })</code></pre>
+
+      <h3>Step 4: Find active people</h3>
+      <pre><code>db.people.find({ active: true })</code></pre>
+
+      <h3>Step 5: Find people older than 25</h3>
+      <p><code>$gt</code> means greater than.</p>
+      <pre><code>db.people.find({ age: { $gt: 25 } })</code></pre>
+
+      <h3>Step 6: Find people aged 25 to 30</h3>
+      <p><code>$gte</code> means greater than or equal to. <code>$lte</code> means less than or equal to.</p>
+      <pre><code>db.people.find({
+  age: { $gte: 25, $lte: 30 }
+})</code></pre>
+
+      <h3>Step 7: Find people who know MongoDB</h3>
+      <pre><code>db.people.find({ skills: "MongoDB" })</code></pre>
+
+      <h3>Step 8: Show only selected fields</h3>
+      <p>The second argument is called projection. Use <code>1</code> to include a field and <code>0</code> to hide <code>_id</code>.</p>
+      <pre><code>db.people.find(
+  { active: true },
+  { _id: 0, name: 1, city: 1 }
+)</code></pre>
+
+      <h3>Step 9: Sort results by age</h3>
+      <p>Use <code>1</code> for ascending order and <code>-1</code> for descending order.</p>
+      <pre><code>db.people.find().sort({ age: 1 })</code></pre>
+
+      <h3>Step 10: Limit results</h3>
+      <pre><code>db.people.find().limit(2)</code></pre>
+    </section>
+
+    <section>
+      <h2>3. Update Documents</h2>
+
+      <h3>Step 1: Update one field</h3>
+      <p><code>$set</code> changes or adds fields without replacing the whole document.</p>
+      <pre><code>db.people.updateOne(
+  { name: "Asha" },
+  { $set: { city: "Hyderabad" } }
+)</code></pre>
+
+      <h3>Step 2: Update many documents</h3>
+      <p>This marks all people from Pune as inactive.</p>
+      <pre><code>db.people.updateMany(
+  { city: "Pune" },
+  { $set: { active: false } }
+)</code></pre>
+
+      <h3>Step 3: Increase a number</h3>
+      <p><code>$inc</code> increases or decreases numeric values.</p>
+      <pre><code>db.people.updateOne(
+  { name: "Rahul" },
+  { $inc: { age: 1 } }
+)</code></pre>
+
+      <h3>Step 4: Add a skill to an array</h3>
+      <p><code>$push</code> adds a value to an array.</p>
+      <pre><code>db.people.updateOne(
+  { name: "Meera" },
+  { $push: { skills: "Docker" } }
+)</code></pre>
+
+      <h3>Step 5: Add a skill only if it does not already exist</h3>
+      <p><code>$addToSet</code> avoids duplicate array values.</p>
+      <pre><code>db.people.updateOne(
+  { name: "Asha" },
+  { $addToSet: { skills: "MongoDB" } }
+)</code></pre>
+
+      <h3>Step 6: Remove a field</h3>
+      <p><code>$unset</code> removes a field from matching documents.</p>
+      <pre><code>db.people.updateOne(
+  { name: "John" },
+  { $unset: { active: "" } }
+)</code></pre>
+
+      <h3>Step 7: Check the updated document</h3>
+      <pre><code>db.people.findOne({ name: "Asha" })</code></pre>
+
+      <div class="warning">
+        Be careful with <code>updateMany()</code>. If your filter is empty, it can update every document in the collection.
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Delete Documents</h2>
+
+      <h3>Step 1: Delete one person</h3>
+      <p><code>deleteOne()</code> removes the first matching document.</p>
+      <pre><code>db.people.deleteOne({ name: "John" })</code></pre>
+
+      <h3>Step 2: Delete many people</h3>
+      <p>This removes all inactive people.</p>
+      <pre><code>db.people.deleteMany({ active: false })</code></pre>
+
+      <h3>Step 3: Confirm what remains</h3>
+      <pre><code>db.people.find().pretty()</code></pre>
+
+      <div class="warning">
+        Avoid running <code>db.people.deleteMany({})</code> unless you really want to delete every document in <code>people</code>.
+      </div>
+    </section>
+
+    <section>
+      <h2>5. Useful Practice Commands</h2>
+
+      <h3>Count all people</h3>
+      <pre><code>db.people.countDocuments()</code></pre>
+
+      <h3>Count active people</h3>
+      <pre><code>db.people.countDocuments({ active: true })</code></pre>
+
+      <h3>Find people whose city is either Mumbai or Delhi</h3>
+      <p><code>$in</code> matches any value from a list.</p>
+      <pre><code>db.people.find({
+  city: { $in: ["Mumbai", "Delhi"] }
+})</code></pre>
+
+      <h3>Find people who are not active</h3>
+      <p><code>$ne</code> means not equal.</p>
+      <pre><code>db.people.find({ active: { $ne: true } })</code></pre>
+
+      <h3>Find people with both JavaScript and MongoDB skills</h3>
+      <p><code>$all</code> checks that an array contains all listed values.</p>
+      <pre><code>db.people.find({
+  skills: { $all: ["JavaScript", "MongoDB"] }
+})</code></pre>
+    </section>
+
+    <section>
+      <h2>6. Mini Exercises</h2>
+      <ol>
+        <li>Insert a new person with your own name, age, city, skills, and active status.</li>
+        <li>Find all people from your city.</li>
+        <li>Update your age by increasing it by <code>1</code>.</li>
+        <li>Add one new skill to your skills array.</li>
+        <li>Find only names and skills of all active people.</li>
+        <li>Delete one test person by name.</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
+
