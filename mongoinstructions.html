@@ -427,7 +427,86 @@
         <li>Delete one test person by name.</li>
       </ol>
     </section>
+    <section>
+      <h2>7. Create a Large Practice Database</h2>
+      <p>The project now includes a script named <code>seed-bigone.js</code>. It creates a database named <code>bigone</code> with five collections:</p>
+      <ul>
+        <li><code>customers</code> with 5,000 documents</li>
+        <li><code>products</code> with 5,000 documents</li>
+        <li><code>orders</code> with 5,000 documents</li>
+        <li><code>reviews</code> with 5,000 documents</li>
+        <li><code>supportTickets</code> with 5,000 documents</li>
+      </ul>
+
+      <div class="warning">
+        Running this script recreates the <code>bigone</code> database. If a <code>bigone</code> database already exists, its data will be deleted first.
+      </div>
+
+      <h3>Step 1: Open a terminal in this project folder</h3>
+      <pre><code>cd D:\new-projects\mongodb-course\single-node-cluster-installation</code></pre>
+
+      <h3>Step 2: Run the seed script</h3>
+      <p>Make sure MongoDB is running, then run:</p>
+      <pre><code>mongosh seed-bigone.js</code></pre>
+
+      <h3>Step 3: Switch to the new database</h3>
+      <pre><code>mongosh
+use bigone</code></pre>
+
+      <h3>Step 4: Check the collections</h3>
+      <pre><code>show collections</code></pre>
+
+      <h3>Step 5: Count documents in each collection</h3>
+      <pre><code>db.customers.countDocuments()
+db.products.countDocuments()
+db.orders.countDocuments()
+db.reviews.countDocuments()
+db.supportTickets.countDocuments()</code></pre>
+
+      <h3>Step 6: Try a few sample queries</h3>
+      <pre><code>db.customers.findOne()
+db.products.find({ category: "Laptop" }).limit(5)
+db.orders.find({ status: "delivered" }).limit(5)
+db.reviews.find({ rating: 5 }).limit(5)
+db.supportTickets.find({ status: "open" }).limit(5)</code></pre>
+    </section>
+
+    <section>
+      <h2>8. Back Up the bigone Database Using mongoexport</h2>
+      <p><code>mongoexport</code> exports one collection at a time. To back up all five collections from <code>bigone</code>, run one command per collection.</p>
+
+      <h3>Step 1: Create a backup folder</h3>
+      <p>In PowerShell, run:</p>
+      <pre><code>mkdir bigone-export</code></pre>
+
+      <h3>Step 2: Export customers</h3>
+      <pre><code>mongoexport --db bigone --collection customers --out bigone-export\customers.json --jsonArray</code></pre>
+
+      <h3>Step 3: Export products</h3>
+      <pre><code>mongoexport --db bigone --collection products --out bigone-export\products.json --jsonArray</code></pre>
+
+      <h3>Step 4: Export orders</h3>
+      <pre><code>mongoexport --db bigone --collection orders --out bigone-export\orders.json --jsonArray</code></pre>
+
+      <h3>Step 5: Export reviews</h3>
+      <pre><code>mongoexport --db bigone --collection reviews --out bigone-export\reviews.json --jsonArray</code></pre>
+
+      <h3>Step 6: Export support tickets</h3>
+      <pre><code>mongoexport --db bigone --collection supportTickets --out bigone-export\supportTickets.json --jsonArray</code></pre>
+
+      <h3>Step 7: Check exported files</h3>
+      <pre><code>dir bigone-export</code></pre>
+
+      <div class="note">
+        If your MongoDB server uses authentication, add your connection string with <code>--uri</code>. Example: <code>mongoexport --uri "mongodb://username:password@localhost:27017/bigone" --collection customers --out bigone-export\customers.json --jsonArray</code>
+      </div>
+
+      <div class="note">
+        <code>mongoexport</code> is good for JSON or CSV data exports. For a full database backup including indexes and metadata, use <code>mongodump</code>. For this tutorial, the commands above focus on <code>mongoexport</code> as requested.
+      </div>
+    </section>
   </main>
 </body>
 </html>
+
 
